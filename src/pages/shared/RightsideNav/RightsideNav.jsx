@@ -17,9 +17,9 @@ const RightsideNav = () => {
             <div >
             <h3 className="text-xl font-bold">Find Us On</h3>
             <div className="my-5">
-            <a href="" className="flex gap-2 items-center p-6 border rounded-t-lg"><FaFacebook></FaFacebook> Facebook</a>
-            <a href="" className="flex gap-2 items-center p-6 border-x"><FaTwitter></FaTwitter> Twitter</a>
-            <a href="" className="flex gap-2 items-center p-6 border rounded-b-lg"><FaInstagram></FaInstagram> Instagram</a>
+            <a href="" className="flex gap-2 items-center p-4 border rounded-t-lg"><FaFacebook></FaFacebook> Facebook</a>
+            <a href="" className="flex gap-2 items-center p-4 border-x"><FaTwitter></FaTwitter> Twitter</a>
+            <a href="" className="flex gap-2 items-center p-4 border rounded-b-lg"><FaInstagram></FaInstagram> Instagram</a>
             </div>
             </div>
 
