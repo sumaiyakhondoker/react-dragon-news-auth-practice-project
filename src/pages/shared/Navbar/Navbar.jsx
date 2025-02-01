@@ -1,5 +1,5 @@
 import userDefaultPic from '../../../assets/user.png'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -7,6 +7,7 @@ const Navbar = () => {
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/about'>About</NavLink></li>
     <li><NavLink to='/career'>Career</NavLink></li>
+    <li><NavLink to='/login'>Login</NavLink></li>
       
       
     
@@ -50,7 +51,7 @@ const Navbar = () => {
             src={userDefaultPic} />
         </div>
       </div>
-    <a className="btn btn-neutral ml-3 px-8 text-lg">Login</a>
+    <Link to='/login'><button className="btn btn-neutral ml-3 px-8 text-lg">Login</button></Link>
   </div>
 </div>
     );
