@@ -1,15 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate()
+  const [loginError, setLoginError] = useState(null)
+  // console.log(location);
+  const {loginUser} = useContext(AuthContext)
+ 
   const handleLogin = (e) => {
+    setLoginError('')
     e.preventDefault()
-    console.log("clicked");
+    const form = new FormData(e.currentTarget)
+    const email = form.get('email')
+    const password = form.get('password')
+    loginUser(email, password)
+    .then(result =>{
+      console.log(result.user);
+       navigate(location?.state ? location.state : '/')
+    })
+    .catch(error =>{
+      console.log(error);
+      setLoginError(error)
+    })
+    e.target.reset()
   };
   return (
-    <div className="bg-base-200">
+    <div>
       <Navbar></Navbar>
-      <div className="hero min-h-screen">
+      <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col">
           <div className="text-center">
             <h1 className="text-3xl font-semibold">Login Your Account</h1>
@@ -27,6 +48,10 @@ const Login = () => {
                   className="input input-bordered"
                   required
                 />
+                {
+                  loginError && <p className="text-red-500">{loginError.message.slice(17,40)}</p>
+                }
+                
               </div>
               <div className="form-control">
                 <label className="label">

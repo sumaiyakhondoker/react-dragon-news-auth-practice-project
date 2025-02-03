@@ -3,14 +3,37 @@ import { FaFacebook } from "react-icons/fa6";
 import qZone1 from '../../../assets/swimming.png'
 import qZone2 from '../../../assets/class.png'
 import qZone3 from '../../../assets/playground.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const RightsideNav = () => {
+
+    const {googleLogin, githubLogin} = useContext(AuthContext)
+    const handleGoogleLogin = ()=>{
+        googleLogin()
+        .then(result =>{
+            console.log(result.user);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+
+    const handleGithubLogin = () =>{
+         githubLogin()
+         .then(result =>{
+            console.log(result.user);
+         })
+         .catch(error =>{
+            console.log(error);
+         })
+    }
     return (
         <div className="space-y-5">
             <div >
             <h3 className="text-xl font-bold">Login With</h3>
-            <button className="btn btn-outline btn-info my-2 w-full"><FaGoogle></FaGoogle> Login With Google</button>
-            <button className="btn btn-outline mb-3 w-full"><FaGithub></FaGithub> Login With Github</button>
+            <button onClick={handleGoogleLogin} className="btn btn-outline btn-info my-2 w-full"><FaGoogle></FaGoogle> Login With Google</button>
+            <button onClick={handleGithubLogin} className="btn btn-outline mb-3 w-full"><FaGithub></FaGithub> Login With Github</button>
             </div>
 
 

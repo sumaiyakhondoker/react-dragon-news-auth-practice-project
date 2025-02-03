@@ -1,12 +1,29 @@
 import { Link } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Register = () => {
-
+const { registerUser} = useContext(AuthContext)
+const [error, setError] = useState(null)
     const handleRegister = (e) =>{
         e.preventDefault()
-        console.log('clicked');
+        const form = new FormData(e.currentTarget)
+        // console.log(form.get('name'));
+        const email = form.get('email')
+        const password = form.get('password')
+        registerUser(email, password)
+        .then(result =>{
+          console.log(result.user);
+        })
+        .catch(error =>{
+          setError(error)
+          
+        })
+
+        
+        
     }
     return (
         <div className="bg-base-200">
@@ -53,6 +70,11 @@ const Register = () => {
                     className="input input-bordered"
                     required
                   />
+                  
+                    {
+                      error && <p className="text-red-400">{error.code}</p>
+                    }
+                  
                 </div>
                 <div className="form-control">
                   <label className="label">
@@ -72,7 +94,7 @@ const Register = () => {
                   </label>
                 </div>
 
-                <p className="flex items-center"><input type="checkbox" className="checkbox mr-2 checkbox-xs " />Accept <a className="font-bold ml-1" href="#"> Term & Conditions</a> </p>
+                <p className="flex items-center"><input type="checkbox" className="checkbox mr-2 checkbox-xs checkbox-primary" />Accept <a className="font-bold ml-1" href="#"> Term & Conditions</a> </p>
                 <div className="form-control mt-2">
                   <button className="btn btn-neutral">Register</button>
                 </div>
