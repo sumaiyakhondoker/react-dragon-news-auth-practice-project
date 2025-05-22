@@ -71,9 +71,7 @@ const [error, setError] = useState(null)
                     required
                   />
                   
-                    {
-                      error && <p className="text-red-400">{error.code}</p>
-                    }
+                    
                   
                 </div>
                 <div className="form-control">
@@ -87,6 +85,9 @@ const [error, setError] = useState(null)
                     className="input input-bordered"
                     required
                   />
+                  {
+                      error && <p className="text-red-400">{error.code}</p>
+                    }
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">
                       Forgot password?
