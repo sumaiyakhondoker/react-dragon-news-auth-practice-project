@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
+
+  const navigate = useNavigate()
 const { registerUser} = useContext(AuthContext)
 const [error, setError] = useState(null)
     const handleRegister = (e) =>{
@@ -16,6 +19,14 @@ const [error, setError] = useState(null)
         registerUser(email, password)
         .then(result =>{
           console.log(result.user);
+          Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "You have registered successfully!!",
+  showConfirmButton: false,
+  timer: 1500
+});
+          navigate('/')
         })
         .catch(error =>{
           setError(error)
@@ -70,7 +81,9 @@ const [error, setError] = useState(null)
                     className="input input-bordered"
                     required
                   />
-                  
+                  {
+                      error && <p className="text-red-400">{error.code}</p>
+                    }
                     
                   
                 </div>
@@ -85,9 +98,7 @@ const [error, setError] = useState(null)
                     className="input input-bordered"
                     required
                   />
-                  {
-                      error && <p className="text-red-400">{error.code}</p>
-                    }
+                  
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover">
                       Forgot password?

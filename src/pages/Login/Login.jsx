@@ -2,12 +2,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../shared/Navbar/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate()
   const [loginError, setLoginError] = useState(null)
-  // console.log(location);
+  console.log(location);
   const {loginUser} = useContext(AuthContext)
  
   const handleLogin = (e) => {
@@ -19,6 +20,13 @@ const Login = () => {
     loginUser(email, password)
     .then(result =>{
       console.log(result.user);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "You have logged in successfully!!",
+        showConfirmButton: false,
+        timer: 1500
+      });
        navigate(location?.state ? location.state : '/')
     })
     .catch(error =>{

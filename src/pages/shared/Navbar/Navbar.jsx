@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import userDefaultPic from '../../../assets/user.png'
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContext)
@@ -9,10 +10,22 @@ const Navbar = () => {
   const handleLogOut = () =>{
     logOut()
     .then(()=>{
-      console.log('user signed out successfully');
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "You have signed out successfully!!",
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
     .catch(error =>{
-      console.log(error);
+      Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Something went wrong!",
+  footer: '<a href="#">Why do I have this issue?</a>'
+});
+ console.log(error);
     })
   }
     const navlinks = <>
