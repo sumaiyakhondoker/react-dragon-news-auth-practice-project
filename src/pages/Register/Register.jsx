@@ -28,7 +28,7 @@ const [error, setError] = useState(null)
     return (
         <div className="bg-base-200">
         <Navbar></Navbar>
-        <div className="hero min-h-screen py-10">
+        <div className="hero md:min-h-screen py-4 md:py-0">
           <div className="hero-content flex-col">
             <div className="text-center">
               <h1 className="text-3xl font-semibold">Register Your Account</h1>
@@ -95,7 +95,7 @@ const [error, setError] = useState(null)
                   </label>
                 </div>
 
-                <p className="flex items-center"><input type="checkbox" className="checkbox mr-2 checkbox-xs checkbox-primary" />Accept <a className="font-bold ml-1" href="#"> Term & Conditions</a> </p>
+                
                 <div className="form-control mt-2">
                   <button className="btn btn-neutral">Register</button>
                 </div>

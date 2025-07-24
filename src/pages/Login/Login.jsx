@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero bg-base-200 md:min-h-screen py-4 md:py-0">
         <div className="hero-content flex-col">
           <div className="text-center">
             <h1 className="text-3xl font-semibold">Login Your Account</h1>

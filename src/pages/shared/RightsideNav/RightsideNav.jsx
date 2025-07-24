@@ -50,7 +50,7 @@ const RightsideNav = () => {
 
             <div className="bg-slate-100 py-4">
             <h3 className="text-xl font-bold pl-3">Q-Zone</h3>
-            <div className="space-y-5">
+            <div className="space-y-5 place-items-center">
                 <img src={qZone1} alt="" />
                 <img src={qZone2} alt="" />
                 <img src={qZone3} alt="" />

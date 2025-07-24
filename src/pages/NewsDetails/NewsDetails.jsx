@@ -18,10 +18,10 @@ const NewsDetails = () => {
   return (
     <div>
       <Header></Header>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-5">
         <div className="col-span-3 ">
         <h3 className="text-xl font-bold mb-2">Dragon News</h3>
-          <div className="border p-7 dark:bg-gray-50 dark:text-gray-800">
+          <div className="border p-3 md:p-7 dark:bg-gray-50 dark:text-gray-800">
             
             <div className="space-y-4">
               <div className="space-y-2 ">
